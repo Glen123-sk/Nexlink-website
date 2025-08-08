@@ -3,171 +3,432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NexLink Tech Support | Remote IT Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Instagram</title>
     <style>
-        :root {
-            --primary: #0066ff;
-            --secondary: #00ccff;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-            --accent: #ff6b6b;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: #fafafa;
+            color: #262626;
+            max-width: 100%;
+            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             overflow-x: hidden;
-            position: relative;
         }
         
-        /* Preloader with NexLink Text Only */
-        .preloader {
+        /* Header */
+        .header {
             position: fixed;
             top: 0;
-            left: 0;
+            width: 100%;
+            background-color: white;
+            border-bottom: 1px solid #dbdbdb;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-family: 'Billabong', cursive;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-icons i {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Stories */
+        .stories {
+            background-color: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            margin-top: 60px;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 15px 10px;
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            white-space: nowrap;
+        }
+        
+        .stories::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .story {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .story-avatar {
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        .story-avatar img {
             width: 100%;
             height: 100%;
-            background: var(--dark);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
+            border-radius: 50%;
+            border: 2px solid white;
+            object-fit: cover;
         }
         
-        .preloader.fade-out {
-            opacity: 0;
-        }
-        
-        .nexlink-loader {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        
-        .nexlink-logo {
-            font-size: 4rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1rem;
-            position: relative;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-        
-        .nexlink-logo span {
-            color: var(--primary);
-        }
-        
-        .nexlink-sublogo {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-        
-        .progress-bar {
-            width: 250px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
+        .story-username {
+            font-size: 12px;
+            margin-top: 5px;
+            max-width: 70px;
             overflow: hidden;
+            text-overflow: ellipsis;
         }
         
-        .progress {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
+        /* Posts */
+        .feed {
+            margin-top: 10px;
+            margin-bottom: 60px;
         }
         
-        /* Animation for text logo */
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 10px rgba(0, 102, 255, 0.3); }
-            50% { text-shadow: 0 0 20px rgba(0, 102, 255, 0.6); }
-            100% { text-shadow: 0 0 10px rgba(0, 102, 255, 0.3); }
+        .post {
+            background-color: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            margin: 10px;
+            margin-bottom: 20px;
         }
         
-        /* Rest of your existing CSS remains the same */
-        /* ... [All your existing CSS styles remain unchanged] ... */
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px;
+        }
         
+        .post-user {
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .post-username {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .post-more {
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .post-image {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+        }
+        
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+        }
+        
+        .post-actions-left {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .post-action {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .post-likes {
+            font-weight: 600;
+            font-size: 14px;
+            padding: 0 15px;
+            margin-bottom: 8px;
+        }
+        
+        .post-caption {
+            padding: 0 15px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .post-caption-username {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        
+        .post-comments {
+            padding: 0 15px;
+            color: #8e8e8e;
+            font-size: 14px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        
+        .post-time {
+            padding: 0 15px;
+            color: #8e8e8e;
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .post-add-comment {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-top: 1px solid #efefef;
+        }
+        
+        .comment-input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            width: 85%;
+        }
+        
+        .post-button {
+            color: #0095f6;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+            border-top: 1px solid #dbdbdb;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            z-index: 100;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .nav-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        /* Icons (using Unicode as placeholder) */
+        .icon-home:after { content: "🏠"; }
+        .icon-search:after { content: "🔍"; }
+        .icon-add:after { content: "➕"; }
+        .icon-reels:after { content: "🎥"; }
+        .icon-heart:after { content: "❤️"; }
+        .icon-heart-outline:after { content: "♡"; }
+        .icon-comment:after { content: "💬"; }
+        .icon-share:after { content: "📤"; }
+        .icon-save:after { content: "📁"; }
+        .icon-more:after { content: "⋯"; }
+        
+        /* Touch feedback */
+        .touchable:active {
+            opacity: 0.6;
+            transform: scale(0.95);
+            transition: all 0.1s;
+        }
     </style>
 </head>
 <body>
-    <!-- Preloader with NexLink Text Only -->
-    <div class="preloader">
-        <div class="nexlink-loader">
-            <div class="nexlink-logo" style="animation: textGlow 2s ease infinite;">Nex<span>Link</span></div>
-            <div class="nexlink-sublogo">TECHNOLOGY SOLUTIONS</div>
-            <div class="progress-bar">
-                <div class="progress"></div>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">Instagram</div>
+        <div class="header-icons">
+            <div class="icon-heart touchable"></div>
+            <div class="icon-share touchable"></div>
+        </div>
+    </div>
+    
+    <!-- Stories -->
+    <div class="stories">
+        <div class="story">
+            <div class="story-avatar">
+                <img src="https://via.placeholder.com/66" alt="Your Story">
+            </div>
+            <div class="story-username">Your Story</div>
+        </div>
+        <div class="story">
+            <div class="story-avatar">
+                <img src="https://via.placeholder.com/66/ff0000" alt="user1">
+            </div>
+            <div class="story-username">user1</div>
+        </div>
+        <div class="story">
+            <div class="story-avatar">
+                <img src="https://via.placeholder.com/66/00ff00" alt="user2">
+            </div>
+            <div class="story-username">user2_longusername</div>
+        </div>
+        <div class="story">
+            <div class="story-avatar">
+                <img src="https://via.placeholder.com/66/0000ff" alt="user3">
+            </div>
+            <div class="story-username">user3</div>
+        </div>
+        <div class="story">
+            <div class="story-avatar">
+                <img src="https://via.placeholder.com/66/ffff00" alt="user4">
+            </div>
+            <div class="story-username">user4</div>
+        </div>
+        <div class="story">
+            <div class="story-avatar">
+                <img src="https://via.placeholder.com/66/ff00ff" alt="user5">
+            </div>
+            <div class="story-username">user5</div>
+        </div>
+    </div>
+    
+    <!-- Feed -->
+    <div class="feed">
+        <div class="post">
+            <div class="post-header">
+                <div class="post-user">
+                    <img class="post-avatar" src="https://via.placeholder.com/32/ff0000" alt="user1">
+                    <div class="post-username">user1</div>
+                </div>
+                <div class="post-more touchable icon-more"></div>
+            </div>
+            <img class="post-image" src="https://via.placeholder.com/400x400/ff0000" alt="Post">
+            <div class="post-actions">
+                <div class="post-actions-left">
+                    <div class="post-action touchable icon-heart-outline"></div>
+                    <div class="post-action touchable icon-comment"></div>
+                    <div class="post-action touchable icon-share"></div>
+                </div>
+                <div class="post-action touchable icon-save"></div>
+            </div>
+            <div class="post-likes">1,234 likes</div>
+            <div class="post-caption">
+                <span class="post-caption-username">user1</span>
+                This is a sample post caption with some text to show how it looks in the Instagram interface.
+            </div>
+            <div class="post-comments">View all 42 comments</div>
+            <div class="post-time">2 hours ago</div>
+            <div class="post-add-comment">
+                <input class="comment-input" type="text" placeholder="Add a comment...">
+                <div class="post-button touchable">Post</div>
+            </div>
+        </div>
+        
+        <div class="post">
+            <div class="post-header">
+                <div class="post-user">
+                    <img class="post-avatar" src="https://via.placeholder.com/32/00ff00" alt="user2">
+                    <div class="post-username">user2_longusername</div>
+                </div>
+                <div class="post-more touchable icon-more"></div>
+            </div>
+            <img class="post-image" src="https://via.placeholder.com/400x500/00ff00" alt="Post">
+            <div class="post-actions">
+                <div class="post-actions-left">
+                    <div class="post-action touchable icon-heart-outline"></div>
+                    <div class="post-action touchable icon-comment"></div>
+                    <div class="post-action touchable icon-share"></div>
+                </div>
+                <div class="post-action touchable icon-save"></div>
+            </div>
+            <div class="post-likes">567 likes</div>
+            <div class="post-caption">
+                <span class="post-caption-username">user2_longusername</span>
+                Another example post with a different aspect ratio image.
+            </div>
+            <div class="post-comments">View all 12 comments</div>
+            <div class="post-time">5 hours ago</div>
+            <div class="post-add-comment">
+                <input class="comment-input" type="text" placeholder="Add a comment...">
+                <div class="post-button touchable">Post</div>
             </div>
         </div>
     </div>
-
-    <!-- Rest of your HTML remains the same -->
-    <!-- ... [All your existing HTML content remains unchanged] ... -->
+    
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-icon touchable icon-home"></div>
+        <div class="nav-icon touchable icon-search"></div>
+        <div class="nav-icon touchable icon-add"></div>
+        <div class="nav-icon touchable icon-reels"></div>
+        <img class="nav-avatar touchable" src="https://via.placeholder.com/24" alt="Profile">
+    </div>
 
     <script>
-        // Enhanced Preloader with NexLink Text Only
-        window.addEventListener('load', function() {
-            const preloader = document.querySelector('.preloader');
-            const progressBar = document.querySelector('.progress');
-            const nexlinkLogo = document.querySelector('.nexlink-logo');
-            const sublogo = document.querySelector('.nexlink-sublogo');
-            
-            // Initial hidden state
-            nexlinkLogo.style.opacity = '0';
-            nexlinkLogo.style.transform = 'translateY(20px)';
-            sublogo.style.opacity = '0';
-            sublogo.style.transform = 'translateY(20px)';
-            
-            // Animate in
-            setTimeout(() => {
-                nexlinkLogo.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                sublogo.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                nexlinkLogo.style.opacity = '1';
-                nexlinkLogo.style.transform = 'translateY(0)';
-                sublogo.style.opacity = '0.8';
-                sublogo.style.transform = 'translateY(0)';
-                
-                // Simulate loading progress
-                let progress = 0;
-                const interval = setInterval(() => {
-                    progress += Math.random() * 15;
-                    if (progress >= 100) {
-                        progress = 100;
-                        clearInterval(interval);
-                        
-                        // Add fade-out class after progress completes
-                        setTimeout(() => {
-                            preloader.classList.add('fade-out');
-                            
-                            // Remove preloader after animation completes
-                            setTimeout(() => {
-                                preloader.style.display = 'none';
-                            }, 500);
-                        }, 300);
+        // Simple touch feedback and like functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Like button functionality
+            const likeButtons = document.querySelectorAll('.icon-heart-outline');
+            likeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (this.classList.contains('icon-heart-outline')) {
+                        this.classList.remove('icon-heart-outline');
+                        this.classList.add('icon-heart');
+                    } else {
+                        this.classList.remove('icon-heart');
+                        this.classList.add('icon-heart-outline');
                     }
-                    progressBar.style.width = progress + '%';
-                }, 200);
-            }, 100);
+                });
+            });
+            
+            // Prevent zooming on double-tap
+            document.addEventListener('dblclick', function(e) {
+                e.preventDefault();
+            }, { passive: false });
+            
+            // Touch feedback for all touchable elements
+            const touchables = document.querySelectorAll('.touchable');
+            touchables.forEach(el => {
+                el.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.6';
+                    this.style.transform = 'scale(0.95)';
+                });
+                
+                el.addEventListener('touchend', function() {
+                    this.style.opacity = '1';
+                    this.style.transform = 'scale(1)';
+                });
+            });
         });
-        
-        // Rest of your JavaScript remains the same
-        /* ... [All your existing JavaScript remains unchanged] ... */
     </script>
 </body>
 </html>
