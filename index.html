@@ -28,7 +28,7 @@
             position: relative;
         }
         
-        /* Preloader with NexLink Logo */
+        /* Preloader with NexLink Text Only */
         .preloader {
             position: fixed;
             top: 0;
@@ -57,11 +57,13 @@
         }
         
         .nexlink-logo {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 700;
             color: white;
             margin-bottom: 1rem;
             position: relative;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
         
         .nexlink-logo span {
@@ -70,39 +72,18 @@
         
         .nexlink-sublogo {
             color: rgba(255, 255, 255, 0.8);
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            letter-spacing: 2px;
-        }
-        
-        .logo-loader {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 2rem;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .logo-loader svg {
-            width: 80px;
-            height: 80px;
-            animation: pulse 1.5s ease infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 0.8; }
-            100% { transform: scale(1.1); opacity: 1; }
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
         
         .progress-bar {
-            width: 200px;
+            width: 250px;
             height: 4px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 2px;
             overflow: hidden;
-            margin-top: 20px;
         }
         
         .progress {
@@ -112,22 +93,24 @@
             transition: width 0.3s ease;
         }
         
+        /* Animation for text logo */
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(0, 102, 255, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(0, 102, 255, 0.6); }
+            100% { text-shadow: 0 0 10px rgba(0, 102, 255, 0.3); }
+        }
+        
         /* Rest of your existing CSS remains the same */
         /* ... [All your existing CSS styles remain unchanged] ... */
         
     </style>
 </head>
 <body>
-    <!-- Preloader with NexLink Logo -->
+    <!-- Preloader with NexLink Text Only -->
     <div class="preloader">
         <div class="nexlink-loader">
-            <div class="logo-loader">
-                <svg width="80" height="80" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 0C8.96 0 0 8.96 0 20C0 31.04 8.96 40 20 40C31.04 40 40 31.04 40 20C40 8.96 31.04 0 20 0ZM15 30L8 23L10.82 20.18L15 24.34L29.18 10.16L32 13L15 30Z" fill="#0066FF"/>
-                </svg>
-            </div>
-            <div class="nexlink-logo">Nex<span>Link</span></div>
-            <div class="nexlink-sublogo">TECH SUPPORT</div>
+            <div class="nexlink-logo" style="animation: textGlow 2s ease infinite;">Nex<span>Link</span></div>
+            <div class="nexlink-sublogo">TECHNOLOGY SOLUTIONS</div>
             <div class="progress-bar">
                 <div class="progress"></div>
             </div>
@@ -138,25 +121,26 @@
     <!-- ... [All your existing HTML content remains unchanged] ... -->
 
     <script>
-        // Enhanced Preloader with NexLink branding
+        // Enhanced Preloader with NexLink Text Only
         window.addEventListener('load', function() {
             const preloader = document.querySelector('.preloader');
             const progressBar = document.querySelector('.progress');
             const nexlinkLogo = document.querySelector('.nexlink-logo');
             const sublogo = document.querySelector('.nexlink-sublogo');
             
-            // Animate the logo
+            // Initial hidden state
             nexlinkLogo.style.opacity = '0';
             nexlinkLogo.style.transform = 'translateY(20px)';
             sublogo.style.opacity = '0';
             sublogo.style.transform = 'translateY(20px)';
             
+            // Animate in
             setTimeout(() => {
-                nexlinkLogo.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                sublogo.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                nexlinkLogo.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                sublogo.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 nexlinkLogo.style.opacity = '1';
                 nexlinkLogo.style.transform = 'translateY(0)';
-                sublogo.style.opacity = '1';
+                sublogo.style.opacity = '0.8';
                 sublogo.style.transform = 'translateY(0)';
                 
                 // Simulate loading progress
@@ -168,16 +152,18 @@
                         clearInterval(interval);
                         
                         // Add fade-out class after progress completes
-                        preloader.classList.add('fade-out');
-                        
-                        // Remove preloader after animation completes
                         setTimeout(() => {
-                            preloader.style.display = 'none';
-                        }, 500);
+                            preloader.classList.add('fade-out');
+                            
+                            // Remove preloader after animation completes
+                            setTimeout(() => {
+                                preloader.style.display = 'none';
+                            }, 500);
+                        }, 300);
                     }
                     progressBar.style.width = progress + '%';
                 }, 200);
-            }, 300);
+            }, 100);
         });
         
         // Rest of your JavaScript remains the same
